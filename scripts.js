@@ -2,16 +2,30 @@ const input = document.querySelector('input')
 const p = document.querySelector('p')
 
 function search() {
-    for (const contact of contacts) {
-        if(input.value.toLowerCase() === contact.name.toLowerCase()) {
-            p.innerHTML = `Contato encontrado: ${contact.name} tel:${contact.number}`
-
-            break
-        } else {
-            p.innerHTML = "Contato não encontrado"
-        }
+    let i = 0;
+    let found;
+  
+    do {
+      if (input.value.toLowerCase() === contacts[i].name.toLowerCase()) {
+        found = contacts[i];
+      }
+      i++;
+    } while (i < contacts.length);
+  
+    if (found) {
+      p.innerHTML = `Contato encontrado: Nome: ${found.name}, Telefone: ${found.number}`;
+    } else {
+      p.innerHTML = 'Contato não encontrado.';
     }
-}
+  }
+
+
+
+
+
+
+
+
 
 const contacts = [
     {name:"Luan", number:"(51)99358-6706" }, 
